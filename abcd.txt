@@ -1,0 +1,43 @@
+touch			: to create a file
+ls 			: to see the list (only name)
+11				: full information
+ls -a/ll -a: to see the hiddenfiles
+cat file1	: to see the content of a file
+cat>file1	: to insert the content
+ctr1 + d		: save the content
+cat>>file1	: to insert the content second time
+
+======================================================
+
+* means all in the linux
+
+cp file1 file2	: copies the content on file1 to file2
+mv file1 file2	: moves the content on file1 to file2
+rm file1				: to delete the file
+rm -f file1		: to delete forcefully
+touch java{1..20}: to create multiple files
+rm -f j*				: to remove onlu file name starting with j
+rm -f file{2..7} : to remove file2 to file7
+
+head file1		: to see the top 10 line
+head -5 file1	: to see the top 5 line
+tail file1		: to see the last 10 line
+tail -5 file1	: to see the last 5 line
+sed -n '5,15p' file1 : to print lines from 5 to 15 
+wc raham			: to print lines, words, charcters of a file
+du -sh raham  : to show the size of a file
+======================================
+
+mkdir dir1		: to create a folder
+cd					: change directory
+cd dir			: to go to dir1
+cd ..				: come back to one folder back
+cd					: going to root directory
+cd -				: take you to the previous directory
+pwd				: print working directory
+=======================================================
+
+
+
+
+
