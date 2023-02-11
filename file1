@@ -1,0 +1,60 @@
+ 1  top
+    2  pwd
+    3  s
+    4  ls
+    5  rm -rf *
+    6  ll
+    7  pwd
+    8  cd /
+    9  ll
+   10  cd /bin/
+   11  ls
+   12  cd /etc/
+   13  ll
+   14  cd /lib
+   15  ll
+   16  cd /proc/
+   17  ll
+   18  cd /usr/
+   19  ll
+   20  cd
+   21  ifconfig
+   22  hostname -i
+   23  ip addr
+   24  ip addr show
+   25  hostname
+   26  hostnamectl set-hostanme raham
+   27  hostnamectl set-hostname raham
+   28  useradd raham
+   29  cat /etc/passwd
+   30  getent passwd
+   31  id raham
+   32  groupadd devops
+   33  usermod -aG devops raham
+   34  groupadd devops
+   35  id raham
+   36  userdel raham
+   37  touch file1
+   38  cat>file1
+   39  LL
+   40  ll
+   41  cp file1 file1
+   42  cp file1 file2
+   43  ll
+   44  mv file1 file3
+   45  ll
+   46  rm -f file2
+   47  touch abc{1..10}
+   48  ll
+   49  rm -f *
+   50  mkdir abcd
+   51  ll
+   52  touch file1
+   53  ll
+   54  chmod 777 file1
+   55  ll
+   56  useradd raham
+   57  ll
+   58  chown raham:raham file1
+   59  ll
+   60  history
