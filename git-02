@@ -1,0 +1,70 @@
+ 1  ll
+    2  mkdir swiggy
+    3  mkdir paytm
+    4  cd paytm/
+    5  yum install git -y
+    6  ls -al
+    7  git init
+    8  touch file1
+    9  git add file1
+   10  git status
+   11  git commit -m "commit-1" file1
+   12  git status
+   13  git branch
+   14  git branch movieservice
+   15  git branch
+   16  git checkout movieservice
+   17  git branch
+   18  touch movie{1..5}
+   19  git add *
+   20  git commit -m "dev-1 commits" *
+   21  ll
+   22  git branch
+   23  git branch trainservice
+   24  git branch
+   25  git checkout trainservice
+   26  touch train{1..5}
+   27  git add *
+   28  git commit -m "dev-2 commits" *
+   29  git branch
+   30  git checkout -b dthservice
+   31  git branch
+   32  touch dth{1..5}
+   33  git add *
+   34  git commit -m "dev-3 commits" *
+   35  ll
+   36  git branch
+   37  git checkout master
+   38  ll
+   39  git checkout -b loanservice
+   40  ll
+   41  touch loan{1..5}
+   42  git add *
+   43  git commit -m "dev-4 commits" *
+   44  git checkout maste
+   45  git checkout master
+   46  ll
+   47  git merge movieservice
+   48  ll
+   49  git merge trainservice
+   50  ll
+   51  git merge dthservice
+   52  ll
+   53  git rebase loanservice
+   54  ll
+   55  ls -al
+   56  git remote add origin https://github.com/devopsbyraham/paytm.git
+   57  git branch
+   58  git push origin master
+   59  git checkout movieservice
+   60  git push origin movieservice
+   61  ll
+   62  git branch
+   63  git branch -m trainservice raham
+   64  git branch
+   65  git branch -m loanservice rajesh
+   66  git branch
+   67  git branch -d rajesh
+   68  git branch -D rajesh
+   69  git branch
+   70  history
