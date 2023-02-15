@@ -1,0 +1,119 @@
+  1  yum install git -y
+    2  mkdir paytm
+    3  cd
+    4  cd paytm/
+    5  git init
+    6  git --version
+    7  ll
+    8  cd paytm/
+    9  ls -al
+   10  git branch
+   11  touch file1
+   12  git add file1
+   13  git commit -m "commit-1" file1
+   14  git branch
+   15  git checkout -b movie
+   16  touch movie{1..5}
+   17  git add *
+   18  git commit -m "movie commits" *
+   19  ll
+   20  git checkout -b train
+   21  touch train{1..5}
+   22  git add *
+   23  git commit -m "train commits" *
+   24  git checkout -b loan
+   25  touch loan{1..5}
+   26  git add *
+   27  git commit -m "loan commits" *
+   28  ll
+   29  git checkout master
+   30  ll
+   31  git checkout -b dth
+   32  ll
+   33  touch dth{1..5}
+   34  git add *
+   35  git commi -m "dth commits" *
+   36  git commit -m "dth commits" *
+   37  ll
+   38  git checkout master
+   39  ll
+   40  git remote add origin https://github.com/RAHAMSHAIK007/newproject.git
+   41  git branch
+   42  git push origin master
+   43  git checkout movie
+   44  git push origin movie
+   45  git checkout train
+   46* git push origin trai
+   47  git checkout loan
+   48  git push origin loan
+   49  git checkout dth
+   50  git push origin dth
+   51  git branch
+   52  ll
+   53  git merge movie
+   54  git revert
+   55  git revert movie
+   56  ll
+   57  git merge loan
+   58  ll
+   59  git revert loan
+   60  ll
+   61  rm -f t*
+   62  ll
+   63  git checkout master
+   64  ll
+   65  git checkout train
+   66  ll
+   67  git log
+   68  git checkout master
+   69  ll
+   70  git cherry-pick dbb7bae0a40e4ec85d383debfa8e48ea1ae8ab02
+   71  git checkout loan
+   72  ll
+   73  git log --oneline
+   74  git log
+   75  git checkout master
+   76  ll
+   77  git cherry-pick 0e3411a
+   78  ll
+   79  git revert loan
+   80  ll
+   81  git cherry-pick 0e3411a
+   82  cd
+   83  ll
+   84  git clone https://github.com/RAHAMSHAIK007/tillu-branch.git
+   85  ll
+   86  cd tillu-branch/
+   87  ll
+   88  cd
+   89  git clone https://github.com/RAHAMSHAIK007/history.git
+   90  l
+   91  ll
+   92  cd history/
+   93  ll
+   94  cd
+   95  git log
+   96  ll
+   97  cd paytm/
+   98  git branch
+   99  git log
+  100  ll
+  101  git log --oneline
+  102  git log --oneline -2
+  103  git show f00a484
+  104  git log --oneline -2
+  105  git show 2323245
+  106  git status
+  107  ls
+  108  touch abc
+  109  git status
+  110  git add abc
+  111  git status
+  112  git restore --staged abc
+  113  git status
+  114  ll
+  115  git add abc
+  116  git status
+  117  git rm --cached abc
+  118  git status
+  119  history
