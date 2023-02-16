@@ -1,0 +1,84 @@
+    1  ll
+    2  rm -rf *
+    3  mkdir paytm
+    4  cd paytm/
+    5  ll
+    6  git init
+    7  git branch -m branch-1
+    8  vim file1
+    9  git add file1
+   10  git commit -m "dev-1 commits" file1
+   11  git branch
+   12  git checkout -b branch-2
+   13  git branch
+   14  ll
+   15  vim file1
+   16  git add file1
+   17  git commit -m "dev-2 commits" file1
+   18  git checkout branch-1
+   19  vim file1
+   20  git add file1
+   21  git commit -m "dev-1 2nd commits" file1
+   22  git branch
+   23  cat file1
+   24  git checkout branch-2
+   25  cat file1
+   26  git checkout branch-1
+   27  git merge branch-2
+   28  git diff file1
+   29  vim file1
+   30  cat file1
+   31  git add file1
+   32  git commit -m "final commits" file1
+   33  git commit -m "final commits"
+   34  cd ..
+   35  mkdir swiggy
+   36  cd swiggy/
+   37  git init
+   38  vim frontend
+   39  git add frontend
+   40  git commit -m "html commits" frontend
+   41  git checkout -b raham
+   42  vim backend
+   43  git add backend
+   44  ll
+   45  git status
+   46  git stash
+   47  ll
+   48  ls -al
+   49  git checkout master
+   50  vim frontend
+   51  git add frontend
+   52  git commit -m "abc" frontend
+   53  git checkout raham
+   54  ll
+   55  git stash apply
+   56  ll
+   57  vim backend
+   58  ll
+   59  touch sql
+   60  git add sql
+   61  git stash
+   62  ll
+   63  git stash apply
+   64  git stash list
+   65  git stash pop
+   66  git stash list
+   67  git stash clear
+   68  git stash list
+   69  git remote add origin https://github.com/RAHAMSHAIK007/11ambatch2023.git
+   70  git pull origin main
+   71  ll
+   72  cd
+   73  ll
+   74  git clone https://github.com/RAHAMSHAIK007/11ambatch2023.git
+   75  ll
+   76  cd 11ambatch2023/
+   77  ll
+   78  git pull
+   79  git fetch
+   80  ll
+   81  cat abcd.txt
+   82  git pull
+   83  cat abcd.txt
+   84  history
