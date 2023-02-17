@@ -1,0 +1,56 @@
+[root@ip-172-31-92-199 swiggy]# history
+    1  wget https://dlcdn.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    2  ll
+    3  tar -zxvf apache-maven-3.6.3-bin.tar.gz
+    4  ll
+    5  cd apache-maven-3.6.3/
+    6  ll
+    7  yum install java-1.8.0-openjdk -y
+    8  java -version
+    9  yum install maven tree -y
+   10  mvn --version
+   11  ll
+   12  mvn archetype:generate
+   13  pwd
+   14  ll
+   15  cd swiggy/
+   16  ll
+   17  tree
+   18  cat src/main/java/devops/App.java
+   19  cat src/test/java/devops/AppTest.java
+   20  tree
+   21  mvn compile
+   22  ll
+   23  tree
+   24  mvn test
+   25  tree
+   26  mvn pacakge
+   27  mvn package
+   28  tree
+   29  mvn install
+   30  cd /root/.m2/repository/nareshit/swiggy/1.0-SNAPSHOT/
+   31  ll
+   32  cd -
+   33  ll
+   34  mvn deploy
+   35  ll
+   36  mvn clean
+   37  ll
+   38  mvn install
+   39  ll
+   40  cd -
+   41  ll
+   42  cd -
+   43  ll
+   44  cd ..
+   45  mvn clean
+   46  ll
+   47  cd swiggy/
+   48  ll
+   49  mvn clean
+   50  vim pom.xml
+   51  ll
+   52  mv pom.xml ../
+   53  ll
+   54  mvn compile
+   55  history
