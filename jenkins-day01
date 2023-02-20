@@ -1,0 +1,28 @@
+1. setting the repo  (jenkins.io)
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
+2. install java 
+
+amazon-linux-extras install java-openjdk11 -y 
+java -version
+
+
+3. install git,maven and jenkins 
+
+yum install git maven jenkins -y
+
+4. starting jenkins
+
+systemctl start jenkins.service
+systemctl status jenkins.service
+
+5. connecting to server
+
+IPV4:8080 -- > BROWSER
+
+ALLOW 8080 PORT ON SG ( GIVE ALL TRAFFIC -- > ANYWHERE)
+
+
+
