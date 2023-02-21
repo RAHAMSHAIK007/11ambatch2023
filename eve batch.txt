@@ -1,0 +1,51 @@
+  1  yum install java-1.8.0-openjdk -y
+    2  wget https://dlcdn.apache.org/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+    3  ll
+    4  tar -zxvf apache-maven-3.6.3-bin.tar.gz
+    5  ll
+    6  cd apache-maven-3.6.3/
+    7  ll
+    8  mvn archetype:generate
+    9  yum install maven -y
+   10  mvn archetype:generate
+   11  ll
+   12  cd swiggy/
+   13  ll
+   14  yum install tree -y
+   15  tree
+   16  cat src/main/java/devops/App.java
+   17  cat src/test/java/devops/AppTest.java
+   18  ll
+   19  cat pom.xml | grep -i compiler
+   20  mvn compiler
+   21  mvn compile
+   22  ll
+   23  tree
+   24  cat pom.xml |grep -i test
+   25  cat pom.xml |grep -i junit
+   26  mvn test
+   27  tree
+   28  mvn package
+   29  ls target/
+   30  mvn install
+   31  cd /root/.m2/repository/nareshit/swiggy/1.0-SNAPSHOT/
+   32  ll
+   33  pwd
+   34  mvn compile
+   35  cd /root/apache-maven-3.6.3/swiggy/
+   36  mvn compile
+   37  ll
+   38  mvn clean
+   39  ll
+   40  tree
+   41  mvn compile
+   42  tree
+   43  mvn test
+   44  tree
+   45  mvn package
+   46  ls target/
+   47  mvn install
+   48  mvn deploy
+   49  mvn clean
+   50  ll
+   51  mvn test
