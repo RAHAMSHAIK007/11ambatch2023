@@ -1,0 +1,36 @@
+MASTER & SLAVE:
+EXECUTE THGE BELOW COMMANDS ON ALL SERVERS:
+
+1. amazon-linux-extras install java-openjdk11 -y
+2. useradd jenkins
+3. passwd jenkins
+4. visudo 	: 100 th line
+5. vim /etc/ssh/sshd_config   : 63 rd line  (no=yes)
+6. systemctl restart sshd
+7. systemctl status sshd
+=====================================================
+CONNECTING TO JENKINS SLAVES:
+
+9. ssh-keygen
+10. ssh-copy-id jenkins@172.31.63.151
+11. ssh 'jenkins@172.31.63.151'
+12. ctrl + d
+13. ssh-copy-id jenkins@172.31.51.183
+14. ssh 'jenkins@172.31.51.183'
+
+=====================================================
+
+SETTING UP AGENT:
+
+    Dashboard
+    Manage Jenkins
+    Nodes
+
+
+
+
+
+
+
+
+
