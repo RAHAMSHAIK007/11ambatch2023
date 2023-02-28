@@ -1,0 +1,31 @@
+create 3 slaves & create 3 jobs:
+
+job-1: (slave-1) (free style)
+integration of git 
+op: /tmp/user-1/builds/ 
+parameters: choice parameters (client, env)
+vars: build number, job name, jenkins url, commit id
+
+job-2: (slave-2) (free style)
+create files/linux commnads/ 
+op: /tmp/user-2/builds/
+vars: build number, job name, jenkins url
+
+job-3: (slave-3) (pipeline)
+integration of git 
+op: /tmp/user-3/builds/
+parameters: choice parameters (client, env)
+vars: build number, job name, jenkins url, commit id
+
+
+conditions:
+
+job-1 -- > job2 & job3 automatic run
+dont give manual build
+
+pipeline agent:
+
+pipeline {
+    agent {
+        label 'swiggy'
+    }
