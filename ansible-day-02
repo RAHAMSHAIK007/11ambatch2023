@@ -1,0 +1,48 @@
+24  ansible all -b -m yum -a "pkg=git state=present"
+   25  ansible all -b -m yum -a "pkg=git state=absent"
+   26  ansible all -b -m yum -a "pkg=httpd state=present"
+   27  ansible all -b -m yum -a "pkg=httpd state=started"
+   28  ansible all -b -m service -a "name=httpd state=started"
+   29  ansible all -b -a "useradd raham"
+   30  ansible all -b -a "cat /etc/passwd"
+   31  ansible all -b -m user -a "name=rajesh"
+   32  ansible all -b -m user -a "name=ramesh state=present"
+   33  ansible all -b -a "cat /etc/passwd"
+   34  ll
+   35  echo "hai all my name is raham" > abc.txt
+   36  ll
+   37  cat abc.txt
+   38  ansible all -b -m copy -a "file=abc.txt dest=/tmp"
+   39  ansible all -b -m copy -a "src=abc.txt dest=/tmp"
+   40  ansible all -b -a "ls"
+   41  ansible all -b -a "ls /tmp"
+   42  ll
+   43  rm -rf *
+   44  vim task.yml
+   45  ansible-playbook task.yml
+   46  vim task.yml
+   47  ansible-playbook task.yml
+   48  vim task.yml
+   49  ansible-playbook task.yml
+   50  ansible all -ba "yum remove httpd git -y"
+   51  ansible-playbook task.yml
+   52  ansible all -ba "yum remove httpd git -y"
+   53  vim task.yml
+   54  ansible-playbook task.yml
+   55  ansible all -ba "yum remove docker tree -y"
+   56  vim task.yml
+   57  ansible-playbook task.yml
+   58  ansible all -ba "docker --version"
+   59  ansible all -ba "tree --version"
+   60  vim task.yml
+   61  cat task.yml
+   62  ansible all -ba "yum remove docker tree -y"
+   63  cat task.yml
+   64  ansible-playbook task.yml --extra-vars "a=docker b=maven"
+   65  vim task.yml
+   66  ansible all -ba "yum remove docker tree -y"
+   67  ansible-playbook task.yml --extra-vars "a=docker b=maven"
+   68  vim task.yml
+   69  ansible all -ba "yum remove docker tree git httpd maven -y"
+   70  ansible-playbook task.yml
+   71  history
