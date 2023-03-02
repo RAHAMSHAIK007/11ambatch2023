@@ -1,0 +1,159 @@
+ 72  cd .ssh/
+   73  ll
+   74  cd
+   75  ll
+   76  vim task.yml
+   77  ansible all -ba "yum remove docker tree git httpd maven -y"
+   78  vim task.yml
+   79  ansible all --list-hosts
+   80  ansible setup -m 172.31.61.251
+   81  ansible -m setup 172.31.61.251
+   82  ansible-playbook task.yml
+   83  ll
+   84  ansible-vault create creds.txt
+   85  cat creds.txt
+   86  ansible-vault edit creds.txt
+   87  cat creds.txt
+   88  ansible-vault rekey creds.txt
+   89  cat creds.txt
+   90  ansible-vault decrypt creds.txt
+   91  cat creds.txt
+   92  ansible-vault encrypt creds.txt
+   93  cat creds.txt
+   94  ansible-vaultview creds.txt
+   95  ansible-vault view creds.txt
+   96  cat creds.txt
+   97  cat task.yml
+   98  ll
+   99  cat task.yml
+  100  ansible-vault encrypt task.yml
+  101  ll
+  102  cat task.yml
+  103  ansible-playbook task.yml
+  104  ansible-vault decrypt task.yml
+  105  ansible-playbook task.yml
+  106  ll
+  107  rm creds.txt
+  108  ll
+  109  vim task.yml
+  110  cat task.yml
+  111  vim task.yml
+  112  cat task.yml
+  113  ansible-playbook task.yml --tags b
+  114  cat task.yml
+  115  ansible-playbook task.yml --tags a
+  116  cat task.yml
+  117  ansible all -ba "yum remove git -y && userdel ironman"
+  118  ansible all -ba "userdel ironman"
+  119  cat task.yml
+  120  ansible-playbook task.yml --tags a,c
+  121  ansible all -ba "yum remove git"
+  122  ansible all -ba "yum remove git -y"
+  123  ps
+  124  kill -9 4409 4407 4405 4404
+  125  ps
+  126  kill -9 4399 4364 4362 4360 4359 4354
+  127  ps
+  128  ansible all -ba "yum remove git -y"
+  129  cat task.yml
+  130  ansible-playbook task.yml --skipped-tags b
+  131  ansible-playbook task.yml --skipped-tags "b"
+  132  ansible-playbook task.yml --skip-tags "b"
+  133  vim task.yml
+  134  ansible-playbook task.yml
+  135  ansible all -ba "yum remove docker -y"
+  136  vim task.yml
+  137  ansible-playbook task.yml
+  138  ansible all -ba "yum remove docker -y"
+  139  vim task.yml
+  140  ansible-playbook task.yml
+  141  ansible all -ba "yum install pip -y"
+  142  vim task.yml
+  143  ansible-playbook task.yml
+  144  vim task.yml
+  145  ansible-playbook task.yml
+  146  ll
+  147  vim task.yml
+  148  ll
+  149  rm -rf *
+  150  ll
+  151  mkdir playbook
+  152  cd playbook/
+  153  ll
+  154  vim master.yml
+  155  ll
+  156  mkdir roles
+  157  mkdir roles/role1
+  158  mkdir roles/role1/tasks
+  159  tree
+  160  sudo yum install tree -y
+  161  tree
+  162  pwd
+  163  vim roles/role1/tasks/main.yml
+  164  tree
+  165  vim master.yml
+  166  cat master.yml
+  167  ansible-playbook master.yml
+  168  cat master.yml
+  169  tree
+  170  mkdir roles/role2
+  171  mkdir roles/role2/tasks
+  172  tree
+  173  vim roles/role2/tasks/main.yml
+  174  tree
+  175  vim master.yml
+  176  ansible-playbook master.yml
+  177  tree
+  178  rm -rf *
+  179  ll
+  180  vim raham.yml
+  181  ansible-playbook raham.yml
+  182  ansible all -ba "systemctl start httpd"
+  183  ansible all -ba "systemctl status httpd"
+  184  cd
+  185  ll
+  186  rm -rf *
+  187  ansible-galaxy init raham
+  188  ll
+  189  tree
+  190  ansible-galaxy init nadeem
+  191  ll
+  192  tree
+  193  ansible-galaxy search jenkins
+  194  ansible-galaxy search elasticsearch
+  195  ansible-galaxy init alikins.elasticsearch
+  196  ll
+  197  ansible-galaxy search --author alikins
+  198  ll
+  199  rm -rf *
+  200  vim raham.yml
+  201  ansible-playbook raham.yml
+  202  ansible all -ba "ls"
+  203  vim raham.yml
+  204  ansible-playbook raham.yml
+  205  cat raham.yml
+  206  vim raham.yml
+  207  ansible-playbook raham.yml
+  208  ansible all -ba "cat application.yml"
+  209  ll
+  210  vim raham.yml
+  211  ansible all -ba "sudo yum remove httpd -y"
+  212  cat raham.yml
+  213  ansible-playbook raham.yml
+  214  cat raham.yml
+  215  vim raham.yml
+  216  ansible-playbook --tags a
+  217  ansible-playbook raham.yml --tags a
+  218  vim raham.yml
+  219  ansible-playbook raham.yml --tags a
+  220  ps
+  221  kill -9 5015 5049 5050
+  222  ps
+  223  vim raham.yml
+  224  ansible-playbook raham.yml --tags a
+  225  vim raham.yml
+  226  ansible-playbook raham.yml --tags a
+  227  vim raham.yml
+  228  ansible-playbook raham.yml --tags a
+  229  ansible-playbook raham.yml
+  230  history
