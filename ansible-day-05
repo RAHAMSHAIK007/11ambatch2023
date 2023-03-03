@@ -1,0 +1,59 @@
+ 232  cat raham.yml
+  233  ansible-playbook raham.yml
+  234  ll
+  235  vim raham.yml
+  236  ansible-playbook raham.yml
+  237  vim raham.yml
+  238  ansible-playbook raham.yml
+  239  vim raham.yml
+  240  ansible-playbook raham.yml
+  241  vim raham.yml
+  242  ansible-playbook raham.yml
+  243  vim raham.yml
+  244  ansible-playbook raham.yml
+  245  vim raham.yml
+  246  ansible-playbook raham.yml
+  247  vim raham.yml
+  248  ansible-playbook raham.yml
+  249  ll
+  250  cat raham.yml
+  251  cat>abc.txt
+  252  vim abc.txt
+  253  ll
+  254  vim raham.yml
+  255  ansible-playbook raham.yml
+  256  vim raham.yml
+  257  ansible-playbook raham.yml
+  258  vim raham.yml
+  259  ansible-playbook raham.yml
+  260  vim raham.yml
+  261  ansible-playbook raham.yml
+  262  vim raham.yml
+  263  ansible-playbook raham.yml
+  264  pwd
+  265  ll
+  266  vim raham.yml
+  267  pwd
+  268  ansible-playbook raham.yml
+  269  cat abc.txt
+  270  vim raham.yml
+  271  vim abc.txt
+  272  ansible-playbook raham.yml
+  273  vim raham.yml
+  274  ansible-playbook raham.yml
+  275  ansible all --list-hosts
+  276  ansible -m setup 172.31.61.251
+  277  ansible -m setup 172.31.61.251 | grep -i cpu
+  278  ansible -m setup 172.31.61.251 | grep -i mem
+  279  ansible -m setup 172.31.61.251 | grep -i block
+  280  ansible -m setup 172.31.61.251 | grep -i family
+  281  ansible -m setup 172.31.61.251
+  282  ansible -m setup "filter=ansible_os_family" 172.31.61.251
+  283  ansible -m setup -a "filter=ansible_os_family" 172.31.61.251
+  284  ansible -m setup -a "filter=ansible_pkg_mgr" 172.31.61.251
+  285  ansible -m setup -a "filter=BOOT_IMAGE" 172.31.61.251
+  286  ansible -m setup -a "filter=ansible_osfamily" 172.31.61.251
+  287  ansible -m setup -a "filter=ansible_os_family" 172.31.61.251
+  288  ansible -m setup 172.31.61.251 | grep -i family
+  289  ansible -m setup 172.31.61.251 | grep -i os
+  290  history
