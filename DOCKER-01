@@ -1,0 +1,36 @@
+1  yum install docker -y
+    2  ps
+    3  kill -9 3344
+    4  ps
+    5  yum install docker -y
+    6  docker --version
+    7  docker version
+    8  service docker start
+    9  service docker status
+   10  docker version
+   11  docker images
+   12  docker search ubuntu
+   13  docker pull ubuntu
+   14  docker images
+   15  docker ps -a
+   16  docker run ubuntu
+   17  docker ps -a
+   18  docker run --name cont1 ubuntu
+   19  docker ps -a
+   20  docker run -it --name cont2 ubuntu
+   21  docker ps -a
+   22  docker ps
+   23  docker start cont2
+   24  docker ps
+   25  docker start cont1
+   26  docker ps
+   27  docker ps -a
+   28  docker start cont1
+   29  docker ps -a
+   30  docker attach cont2
+   31  docker ps -a
+   32  docker images
+   33  docker commit cont2 raham:v1
+   34  docker images
+   35  docker run -it --name cont3 raham:v1
+   36  history
