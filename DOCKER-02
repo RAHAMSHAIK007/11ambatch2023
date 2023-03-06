@@ -1,0 +1,66 @@
+60  yum install docker -y
+   61  cat /etc/passwd
+   62  service docker start
+   63  service docker status
+   64  service docker start
+   65  cat /etc/passwd
+   66  cat /etc/passwd | grep -i docker
+   67  vim Dockerfile
+   68  docker images
+   69  docker build -t swiggy:v1 .
+   70  vim Dockerfile 
+   71  docker build -t swiggy:v1 .
+   72  docker images
+   73  vim Dockerfile 
+   74  docker build -t swiggy:v1 .
+   75  docker images
+   76  docker run -it --name cont1 swiggy:v1
+   77  vim Dockerfile 
+   78  docker build -t swiggy:v1 .
+   79  docker run -it --name cont2 swiggy:v1
+   80  ll
+   81  vim raham.txt
+   82  cat raham.txt 
+   83  vim Dockerfile 
+   84  docker build -t swiggy:v2 .
+   85  vim Dockerfile 
+   86  docker build -t swiggy:v2 .
+   87  docker images
+   88  docker run -it --name cont2 swiggy:v2
+   89  docker run -it --name cont3 swiggy:v2
+   90  docker ps -a
+   91  docker start cont3
+   92  docker attach cont3
+   93  vim Dockerfile 
+   94  docker build -t swiggy:v2 .
+   95  docker run -it --name cont4 swiggy:v2
+   96  vim Dockerfile 
+   97  docker build -t swiggy:v3 .
+   98  docker run -it --name cont5 swiggy:v3 
+   99  vim Dockerfile 
+  100  docker build -t swiggy:v3 .
+  101  docker run -it --name cont6 swiggy:v3 
+  102  vim Dockerfile 
+  103  docker build -t swiggy:v3 .
+  104  docker run -it --name cont7 swiggy:v3 
+  105  vim Dockerfile 
+  106  docker build -t swiggy:v3 .
+  107  docker run -it --name cont8 swiggy:v3 
+  108  vim Dockerfile 
+  109  docker build -t swiggy:v3 .
+  110  docker run -it --name cont9 swiggy:v3 .
+  111  docker run -it --name cont9 swiggy:v3
+  112  docker run -it --name cont10 swiggy:v3
+  113  cat Dockerfile 
+  114  vim Dockerfile 
+  115  docker build -t swiggy:v3 .
+  116  docker run -it --name cont11 swiggy:v3
+  117  vim Dockerfile 
+  118  docker build -t swiggy:v3 .
+  119  docker run -it --name cont12 swiggy:v3
+  120  vim Dockerfile 
+  121  docker build -t swiggy:v3 .
+  122  docker run -it --name cont13 swiggy:v3
+  123  docker inspect cont12
+  124  docker inspect cont12 | grep -i email
+  125  history
