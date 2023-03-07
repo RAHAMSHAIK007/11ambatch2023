@@ -1,0 +1,66 @@
+63  yum install docker -y
+   64  systemctl start docker
+   65  systemctl status docker
+   66  vim Dockerfile
+   67  docker build -t swiggy:v1 .
+   68  docker images
+   69  docker run -it --name cont1 swiggy:v1
+   70  docker ps -a
+   71  docker run -it --name cont2 --volume-from cont1 --privileged=true ubuntu
+   72  docker run -it --name cont2 --volumes-from cont1 --privileged=true ubuntu
+   73  docker ps -a
+   74  docker run -it --name cont3 --volumes-from cont1 --privileged=true ubuntu
+   75  docker start cont1
+   76  docker attach cont1
+   77  docker run -it --name cont4 -v /volume2  ubuntu
+   78  docker run -it --name cont5 --volumes-from cont4 --privileged=true  ubuntu
+   79  docker volume ls
+   80  docker volume create raham
+   81  docker volume ls
+   82  docker volume inspect raham
+   83  cd /var/lib/docker/volumes/raham/_data
+   84  touch local{1..5}
+   85  ll
+   86  vim local1
+   87  docker volume ls
+   88  docker run -it --name cont6 --mount source=raham destination=/raham ubuntu
+   89  docker run -it --name cont6 --mount source=raham,destination=/raham ubuntu
+   90  docker volume ls
+   91  docker volume inspect 2879ddda197bbbad005aeb2619e7ad4f6dc5277e60c08275207befd3b5014321
+   92  du -sh
+   93  docker volume ls
+   94  docker volume create swiggy1 siwggy2
+   95  docker volume create swiggy1 
+   96  docker volume create swiggy2
+   97  docker volume ls
+   98  docker volume rm swiggy2
+   99  docker volume ls
+  100  docker volume create swiggy2
+  101  docker volume ls
+  102  docker volume prune
+  103  docker volume ls
+  104  cd
+  105  size
+  106  lsblk
+  107  free -m
+  108  docker images
+  109  docker ps -a
+  110  docker volume ls
+  111  docker system df -v
+  112  docker system df
+  113  cd /tmp/
+  114  ll
+  115  touch tmp{1..5}
+  116  ll
+  117  docker run -it --name cont7 -v /tmp/:/tmp1ubuntu
+  118  docker run -it --name cont7 -v /tmp/:/tmp1 ubuntu
+  119  cd
+  120  docker run -it --name cont9 -v /abcd ubuntu
+  121  docker volume ls
+  122  docker system df -v
+  123  docker volume inspect a076822ea7c053740e8eb8d8b61a986f083c96c4deb9e60acbd74896e536140d
+  124  cd /var/lib/docker/volumes/a076822ea7c053740e8eb8d8b61a986f083c96c4deb9e60acbd74896e536140d/_data
+  125  ll
+  126  cp -R * /opt
+  127  cd /opt/
+  128  ll
