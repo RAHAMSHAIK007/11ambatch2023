@@ -1,0 +1,59 @@
+ 1  docker node ls
+    2  docker ps -a
+    3  docker service create --name swiggy --replicas 3 --publish 80:80 httpd
+    4  docker service ls
+    5  docker ps -a
+    6  docker service swiggy ps -a
+    7  docker swiggy ps -a
+    8  docker service logs
+    9  docker service swiggy logs
+   10  docker service logs swiggy
+   11  docker service ps -a swiggy
+   12  docker service ps swiggy
+   13  docker service images swiggy
+   14  docker service image swiggy
+   15  docker service ps swiggy
+   16  docker service scale swiggy=10
+   17  docker service ps swiggy
+   18  docker info
+   19  docker ps -a
+   20  docker service scale swiggy=5
+   21  docker service ps swiggy
+   22  docker logs ganeg02qs473
+   23  docker ps
+   24  docker logs 0385b8208346
+   25  docker run -itd --name cont1 httppdd
+   26  docker ps -a
+   27  docker service ls
+   28  vim Dockerfile
+   29  vim index.html
+   30  docker build -t raham:v1 .
+   31  docker images
+   32  docker service create --name rahamapp --replicas 3 --publish 81:80 raham:v1
+   33  docker ps -a
+   34  docker images
+   35  docker tag raham sksajid/sajid
+   36  docker tag raham:v1 sksajid/sajid
+   37  docker images'
+   38  docker images
+   39  docker login
+   40  docker images
+   41  docker push sksajid/sajid
+   42  docker node ls
+   43  docker swarm join-token manager
+   44  docker node ls
+   45  docker swarm leave
+   46  docker node ls
+   47  docker node rm liol7k99as1kr6dke03ha5xk4
+   48  docker node rm tryrn7zt78ytxpzzdbd2u8f04
+   49  docker node rm lua5gzw089gzom3253n1uheu5
+   50  docker node ls
+   51  docker swarm
+   52  docker swarm init
+   53  docker node ls
+   54  docker swarm leave --force
+   55  docker swarm init --advertise-addr 172.31.49.25
+   56  docker node ls
+   57  docker node rm rbbrr5yvsvxg41rmytlo34vdc
+   58  docker node ls
+   59  history
