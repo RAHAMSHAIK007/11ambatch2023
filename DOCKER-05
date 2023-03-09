@@ -1,0 +1,89 @@
+ 1  sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    2  sudo chmod +x /usr/local/bin/docker-compose
+    3  sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose
+    4  docker-compose --version
+    5  docker --version
+    6  yum install docker -y
+    7  systemctl start docker
+    8  systemctl status docker
+    9  docker version
+   10  vim docker-compose.yml
+   11  docker ps -a
+   12  docker-compose up -d
+   13  docker ps -a
+   14  vim docker-compose.yml
+   15  docker-compose up -d
+   16  docker ps -a
+   17  ll
+   18  docker-compose down -d
+   19  docker-compose down
+   20  docker ps -a
+   21  vim docker-compose.yml
+   22  docker pull sksajid/sajid
+   23  docker images
+   24  vim docker-compose.yml
+   25  cat docker-compose.yml
+   26  vim docker-compose.yml
+   27  docker-compose up -d
+   28  vim docker-compose.yml
+   29  docker-compose up -d
+   30  vim docker-compose.yml
+   31  docker-compose up -d
+   32  vim docker-compose.yml
+   33  docker-compose up -d
+   34  vim docker-compose.yml
+   35  docker-compose up -d
+   36  docker ps -a
+   37  docker-compose stop
+   38* docker ps -
+   39  docker-compose logs
+   40  docker-compose images
+   41  docker-compose ps
+   42  docker-compose up -d
+   43  docker-compose pause
+   44  docker ps -a
+   45  docker-compose unpause
+   46  docker-compose down
+   47  docker ps -a
+   48  docker stop 9ef95820d5e1
+   49  docker stats
+   50  docker-compose up -d
+   51  docker stats
+   52  docker system df -v
+   53  ll
+   54  docker-compose stop
+   55  mv docker-compose.yml docker-compose1.yml
+   56  docker-compose up -d
+   57  docker-compose -f docker-compose1.yml up -d
+   58  docker-compose stop
+   59  docker-compose -f docker-compose1.yml stop
+   60  ll
+   61  rm -rf *
+   62  docker swarm init --advertise-addr 172.31.27.195
+   63  curl -L https://downloads.portainer.io/ce2-16/portainer-agent-stack.yml -o portainer-agent-stack.yml
+   64  ll
+   65  cat portainer-agent-stack.yml
+   66  ll
+   67  docker stack deploy -c portainer-agent-stack.yml portainer
+   68  docker ps -a
+   69  docker stack ls
+   70  docker ps -a
+   71  docker info
+   72  docker volume ls
+   73  docker service ls
+   74  free
+   75  lscpu
+   76  docker volume create raham
+   77  docker pull mysql
+   78  docker pull jenkin/jenkins:lts
+   79  docker pull jenkins/jenkins:lts
+   80  docker network ls
+   81  history
+
+
+==============================================
+
+DOCKER FILE: TO CREATE IMAGES
+DOCKER SWARM: MULTIPLE SERVES SINGLE CONTAINER
+DOCKER COMPOSE: MULTIPLE CONTAINER SINGLE SERVER
+DOCKER STACK: MULTIPLE CONTAINERS ON MULTIPLE HOSTS
