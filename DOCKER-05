@@ -87,3 +87,12 @@ DOCKER FILE: TO CREATE IMAGES
 DOCKER SWARM: MULTIPLE SERVES SINGLE CONTAINER
 DOCKER COMPOSE: MULTIPLE CONTAINER SINGLE SERVER
 DOCKER STACK: MULTIPLE CONTAINERS ON MULTIPLE HOSTS
+
+
+PORTAINER:
+
+Must have swarm mode and all ports enable with docker engine
+curl -L https://downloads.portainer.io/ce2-16/portainer-agent-stack.yml -o portainer-agent-stack.yml
+docker stack deploy -c portainer-agent-stack.yml portainer
+ docker ps
+public-ip of swamr master:9000
