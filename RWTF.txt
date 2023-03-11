@@ -1,0 +1,193 @@
+DEBUGGIN & VALIDATION:
+
+Debugging and validation are always a very crucial part of development. Without debugging and validation it is really hard for a developer to do the troubleshooting
+
+To enable the debugging in Terraform you need to set two environment variables - 
+
+1. TF_LOG
+2. TF_FILE_PATH
+
+In the TF_LOG you can set the log level to - DEBUG, INFO, TRACE, WARN
+
+And in TF_FILE_PATH you set the location of the log file where logs will be saved.
+
+export TF_LOG=DEBUG
+echo $TF_LOG
+export TF_LOG_PATH="/root/terraform/terraform.log"
+echo $TF_LOG_PATH
+
+create a EC2 resource and see the logs
+
+VALIDATION:
+
+VERSION MANAGER:
+Managing different versions of Terraform is a bit hard because you need to remove the existing Terraform and install the new Terraform version. 
+
+But upgrading and rolling back terraform versions became a real necessity when you work with the latest stack of different cloud providers (AWS, Azure, Google Cloud) where they keep releasing new versions of their product and often it is noticed that some of the latest versions of those do not work well with Terraform so you often need either upgrade or rollback the version of your Terraform
+
+In case you are using Terraform to provision and manage your infrastructure, you normally install a specific version on your machine (or on your CI servers).
+
+But what if you wanted to install another terraform version to test it out?
+
+In case you have multiple environment in the same codebase, let's say dev and prod, and you deployed both of them using a fixed terraform version (1.2.7).
+
+After a while a new terraform version is available (1.3.1). You can update the version on your machine and test if it works fine, if not re-install the older version ... Which can be a bit cumbersome ...
+
+Or, you can use tfenv which is a Terraform version manager.
+
+After installing tfenv, you can use the tfenv list command to list the available terraform versions you have installed:
+
+REPO LINK: https://github.com/tfutils/tfenv
+
+SETUP:
+git clone --depth=1 https://github.com/tfutils/tfenv.git ~/.tfenv
+echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.bash_profile
+echo 'export PATH=$PATH:$HOME/.tfenv/bin' >> ~/.bashrc
+source .bashrc
+tfenv -v
+tfenv 
+tfenv list-remote
+tfenv install 1.2.9
+tfenv install 1.2.9
+to verify go to this path: /root/.tfenv/versions
+tfenv use 1.2.8 : * mark
+tfenv list
+tfenv use 1.2.7 : * mark
+
+
+=========================================================================================
+
+
+TERRAFORM CLOUD:
+
+Terraform Cloud builds on these features by managing Terraform runs in a consistent and reliable environment instead of on your local machine. It securely stores state and secret data, and can connect to version control systems so that you can develop your infrastructure using a workflow similar to application development. The Terraform Cloud UI provides a detailed view into the resources managed by a Terraform project and gives enhanced visibility into each Terraform operation.
+
+Terraform Cloud also has a private registry for sharing your organization's Terraform modules and providers. Paid features include access controls for approving changes to infrastructure, detailed policy controls for governing the contents of Terraform configurations, cost estimates for runs, and more.
+
+Terraform Cloud helps you collaborate on each step of your infrastructure development process. For example, each time you plan a new change, your team can review and approve the plan before you apply it. It also automatically locks state during operations to prevent concurrent modifications that may corrupt the state file.
+
+
+TO CREATE A CLOUD:
+
+Go to the terrafor instance and give the command
+terraform login 
+
+You can create and login from here: https://app.terraform.io/app/settings/tokens?source=terraform-login
+it will ask the token generate and paste it here
+
+get start from the scratch and create a workspace
+create a rep on github first 
+
+SETP-1:
+
+name -- > private -- > readme -- > .gitignore: terraform -- >  license: apache version 2.0 
+token: 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
+
+clone this repo to terraform instance and craete an new folder swith sample name then add and commit and push it to github
+
+STEP-2:
+create a workspace -- > VCS -- > Github.com (custom) -- >  Register a new OAuth application -- > Application name: Terraform Cloud (Shaik_Raham)
+Homepage URL: https://app.terraform.io -- > Authorization callback URL:	 https://app.terraform.io/auth/f22b8a2d-8fa5-43e5-b1a4-7e0f1a31a22a/callback -- > Register
+NOTE: All these you can see on the SetUp Provider page
+
+Name: github-oauth-terraform -- > Client ID: c1997e0459a6e266e2ad -- > Client Secret: 3108a440034361ca4e2044fc766ec63ec1535413 -- > connect and continue
+click on authorize you will get a mail from github that is is done.
+
+STEP-3:
+SSH-KEY is optional skip it
+
+now start working:
+
+Workspaces -- > create -- > select github -- > select the repo -- > Advance -- > Terraform Working Directory: sample -- > create workspace
+go to workspace overview -- > if you want to change anything go to settings 
+
+create access and secret access key (NOTE: Set as environment varibles)
+Variables -- > Add: KEY: AWS_ACCESS_KEY_ID: ******************* -- >SAVE -- > ADD -- > AWS_SECRET_ACCESS_KEY: *************** -- > SAVE 
+
+Go to the server and write the code now on sample directory and write code
+provider "aws" {
+  region = "ap-southeast-2"
+}
+
+resource "aws_instance" "one" {
+  ami           = "ami-051a81c2bd3e755db"
+  instance_type = "t2.micro"
+  tags = {
+    Name = "raham"
+  }
+}
+
+NOTE: Go to variables select terraform variable and give (optional)
+Add variable -- > terraform variable -- > key : instance_type -- >  t2.micro -- > save
+
+add commit and push the files check it on github
+it will treigger automatically 
+go to the runs and check it is triggred 
+we need to give apply manually because by default it is manual apply method is selected on settings
+if you want to make it auto apply go to settings and change it
+
+Go to github and write coe for bucket now it will be creating automatically
+
+TEST CASE:
+Now we have one ec2 instance in a workspace and using that statefile im going to create instance on another workspace
+
+
+craete a new repo and write code and commit in on github
+
+workspaces -- > new -- > name: prod -- > Apply Method:  Auto apply -- > Run Triggers -- > Only trigger runs when files in specified paths change : Path: terraformcloud/sample2/ -- > save
+go to overview configure vars now 
+After configure if you got to actions you can see all the basic opertaions of terrafom in UI
+click on run once you will see it running from ui as auto approve 
+
+if you want to destroy go to settings -- > Destruction and Deletion -- >  Destroy infrastructure -- > queue destroy plan -- > workspace name -- > save
+now it will be going to delete 
+
+Delete Workspace
+Deleting this workspace does not destroy these resources, and Terraform cannot manage or track remaining infrastructure after deletion.
+Deleting this workspace permanently removes all of its variables, settings, alert history, run history, and Terraform state.
+
+We strongly recommend destroying all resources before deleting this workspace. You can queue a destroy plan in the workspace Settings > Destruction and Deletion.
+This workspace manages 1 resource. Deleting this workspace does not destroy these resources, and Terraform cannot manage or track remaining infrastructure after deletion.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
