@@ -1,0 +1,137 @@
+ 1  apt update -y
+    2  vim minikube.sh
+    3  sh minikube.sh
+    4  minikube status
+    5  kubectl run raham --image=nginx
+    6  kubectl get po
+    7  kubectl get po -o wide
+    8  kubectl describe pod raham
+    9  kubectl get po
+   10  kubectl delete pod raham
+   11  vim pod.yml
+   12  ll
+   13  kubectl get po
+   14  kubectl create -f pod.yml
+   15  kubectl get po
+   16  kubectl get po -o wide
+   17  kubectl describe pod pod1
+   18  kubectl get po
+   19  vim pod.yml
+   20  kubectl apply -f pod.yml
+   21  kubectl get po
+   22  vim pod.yml
+   23  kubectl apply -f pod.yml
+   24  vim pod.yml
+   25  kubectl get po
+   26  kubectl delete pod pod1
+   27  kubectl delete pod raham
+   28  kubectl delete po siva
+   29  kubectl get po
+   30  vim replicaset.yml
+   31  ll
+   32  mkdir k8s
+   33  mv *.yml k8s/
+   34  cd k8s/
+   35  ll
+   36  kubectl create -f replicaset.yml
+   37  kubectl get replicaset
+   38  kubectl get rs
+   39  kubectl get rs -o wide
+   40  kubectl describe rs abc-rs
+   41  kubectl get po
+   42  kubectl delete po abc-rs-zl76h
+   43  kubectl get po
+   44  kubectl delete po abc-rs-k28xl
+   45  kubectl get po
+   46  kubectl get po --show-labels
+   47  kubectl run raham --image=nginx
+   48  kubectl get po --show-labels
+   49  kubectl get po
+   50  kubectl get all
+   51  kubectl run raham --image=httpd
+   52  kubectl get pods
+   53  kubectl get po -o yaml
+   54  kubectl get rs
+   55  kubectl scale replicaset/abc-rs --replicas=10
+   56  kubectl get rs
+   57  kubectl scale replicaset/abc-rs --replicas=5
+   58  kubectl get po
+   59  kubectl delete rs abc-rs
+   60  kubectl get po
+   61  vim replicaset.yml
+   62  kubectl apply -f replicaset.yml
+   63  kubectl get deploy
+   64  kubectl get rs
+   65  kubectl get po
+   66  kubectl scale deployment/abc --replicas=10
+   67  kubectl get deploy
+   68  kubectl describe deploy abc
+   69  vim replicaset.yml
+   70  kubectl apply -f replicaset.yml
+   71  kubectl describe deploy abc
+   72  vim replicaset.yml
+   73  kubectl apply -f replicaset.yml
+   74  kubectl describe deploy abc
+   75  vim replicaset.yml
+   76  kubectl apply -f replicaset.yml
+   77  kubectl describe deploy abc
+   78  kubectl get po
+   79  kubectl descibe pod abc-5696798697-77ssj
+   80  kubectl describe pod abc-5696798697-77ssj
+   81  kubectl describe pod abc-5696798697-hg4ct
+   82  history
+=================================================================================================
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod1
+spec:
+  containers:
+  - name: cont1
+    image: nginx
+============================================================================================================================================================================================
+REPLICASET:
+
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  labels:
+    run: raham
+  name: abc-rs
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: raham
+  template:
+    metadata:
+      labels:
+        run: raham
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+============================================================================================================================================================================================
+DEPLOYMENT:
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: raham
+  name: abc-deploy
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: raham
+  template:
+    metadata:
+      labels:
+        run: raham
+    spec:
+      containers:
+      - name: cont1
+        image: nginx
+
+
