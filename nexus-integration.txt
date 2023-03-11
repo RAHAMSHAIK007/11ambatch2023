@@ -1,0 +1,70 @@
+NEXUS:
+
+1 cpu and 2 gb of ram
+22 and 8081 port
+Openjdk8
+
+NEXUS SETUP:
+
+    1  sudo yum update -y
+    2  sudo yum install wget -y
+    3  sudo yum install java-1.8.0-openjdk.x86_64 -y
+    4  sudo mkdir /app && cd /app
+    5  sudo wget -O nexus.tar.gz https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+    6  ll
+    7  sudo tar -xvf nexus.tar.gz
+    8  ll
+    9  sudo mv nexus-3* nexus
+   10  sudo adduser nexus
+   11  sudo chown -R nexus:nexus /app/nexus
+   12  sudo chown -R nexus:nexus /app/sonatype-work
+   13  sudo vi  /app/nexus/bin/nexus.rc 
+
+run_as_user="nexus"
+
+   14  sudo vi /app/nexus/bin/nexus.vmoptions
+   15  sudo vi /etc/systemd/system/nexus.service
+
+[Unit]
+Description=nexus service
+After=network.target
+
+[Service]
+Type=forking
+LimitNOFILE=65536
+User=nexus
+Group=nexus
+ExecStart=/app/nexus/bin/nexus start
+ExecStop=/app/nexus/bin/nexus stop
+User=nexus
+Restart=on-abort
+
+[Install]
+WantedBy=multi-user.target
+
+   16  sudo chkconfig nexus on
+   17  sudo systemctl start nexus
+   18  systemctl status nexus.service 
+   19  sudo systemctl enable nexus
+   20  systemctl status nexus.service 
+   21  history
+
+
+
+JENKINS SETUP:
+
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+amazon-linux-extras install java-openjdk11 -y
+yum install jenkins -y && systemctl restart jenkins
+yum install java-1.8.0-openjdk -y
+yum install maven -y
+yum install git -y
+
+Vim /etc/maven/settings.xml (line-119)
+
+<server>
+  <id>nexusRepo</id>
+  <username>admin</username>
+  <password>Mashalla</password>
+</server>
