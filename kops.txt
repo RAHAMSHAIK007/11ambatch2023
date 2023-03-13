@@ -1,0 +1,175 @@
+STEP-1: LAUNCH INSTANCE WITH T2.MEDIUM AND 30 GB SSD
+
+STEP-2: INSTALL AWS CLI
+		curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+		unzip awscliv2.zip
+		sudo ./aws/install
+
+STEP-3: INSTALL KOPS & KUBECTL
+		curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+		wget https://github.com/kubernetes/kops/releases/download/v1.24.1/kops-linux-amd64
+		PERMISSIONS: chmod +x kops-linux-amd64 kubectl
+		MOVE FILES:  mv kubectl /usr/local/bin/kubectl
+		MOVE FILES:  mv kops-linux-amd64  /usr/local/bin/kops
+		TO SEE VERSION: kubectl version & kops version
+
+TO  CHECK VERSION: /usr/local/bin/aws --version
+		TO SET PATH: vim .bashrc
+				 export PATH=$PATH:/usr/local/bin/
+				 source .bashrc
+				 aws --version
+
+STEP-4: CREATE IAM USER WITH ADMIN PERMISSIONS AND CONFIGURE IT IN ANY REGION WITH TABLE FORMAT
+        aws configure
+
+STEP-5: CREATE INFRA SETUP
+		TO CREATE BUCKET: aws s3api create-bucket --bucket rahams.k8s.local --region us-east-1
+		TO ENABLE VERSION: aws s3api put-bucket-versioning --bucket rahams.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+		EXPORT CLUSTER DATA INTO BUCKET: export KOPS_STATE_STORE=s3://rahams.k8s.local
+		
+		TO CREATE CLUSTER: kops create cluster --name rahams.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+		TO SEE THE CLUSTER: kops get cluster
+		IF YOU WANT TO EDIT THE CLUSTER: kops edit cluster cluster_name
+		TO RUN THE CLUSTER: kops update cluster --name rahams.k8s.local --yes --admin
+STEP-6: CREATE PODS
+		TO CREATE A POD: kops update cluster --name bhagi.k8s.local --yes --admin
+		TO CHECK THE PODS: kubectl get pods
+		TO CHECK THE POD IS RUNNING WHERE:  kubectl get pods -o wide
+		TO CREATE A CONTIANER: 
+=============================================================================================
+vim pod-nginx.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - image: nginx
+    name: nginx
+================
+		TO DELETE EXISTING POD: kubectl delete pod nginx
+		TO CREATE A POD: kubectl create -f pod-nginx.yml
+		TO DEPLOY POD: we need to delete existing pod (kubectl delete pod nginx) & write the code for deployment
+============================================================
+vim deployment-nginx.yml
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: nginx
+  name: nginx-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: nginx
+  template:
+    metadata:
+      labels:
+        run: nginx
+    spec:
+      containers:
+      - image: nginx
+        name: nginx
+======================================
+		TO DEPLOY IT: kubectl create -f deployment-nginx.yml --validate=false
+		TO DELETE THE WHOLE CLUSTER: kops delete cluster --name cluster_name --yes
+    
+		
+		
+
+===========================================
+
+ 1  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    2  unzip awscliv2.zip
+    3  sudo ./aws/install
+    4  aws configure
+    5  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    6  wget https://github.com/kubernetes/kops/releases/download/v1.24.1/kops-linux-amd64
+    7  ll
+    8  chmod 777 kubectl kops-linux-amd64
+    9  ll
+   10  mv kubectl /usr/local/bin/kubectl
+   11  mv kops-linux-amd64 /usr/local/bin/kops
+   12  kubectl --version
+   13  kops --version
+   14  aws --version
+   15  vim .bashrc
+   16  source .bashrc
+   17  kubectl --version
+   18  kubectl version
+   19  kops --version
+   20  kops version
+   21  kops
+   22  aws s3api create-bucket --bucket nareshit.k8s.local --region us-east-1
+   23  aws s3api put-bucket-versioning --bucket nareshit.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+   24  export KOPS_STATE_STORE=s3://nareshit.k8s.local
+   25  ssh-keygen
+   26  kops create cluster --name nareshit.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+   27  kops get cluster
+   28  kops edit cluster nareshit.k8s.local
+   29   kops edit ig --name=nareshit.k8s.local nodes-us-east-1a
+   30  kops update cluster --name nareshit.k8s.local --yes --admin
+   31  kops validate cluster --wait 10m
+   32  kops get cluster
+   33  kubectl get nodes
+   34  kubectl get nodes -o wide
+   35  kubectl get no
+   36  kubectl run pod1 --image nginx:alpine
+   37  kubectl get pod
+   38  kubectl get pod -o wide
+   39  kops get cluster -o wide
+   40  kubectl get cluster -o wide
+   41  kubectl get pod -o wide
+   42  kubectl get no -o wide
+   43  kubectl delete pod pod1
+   44  history
+   45  kops update cluster --name nareshit.k8s.local --yes --admin
+   46  kops delete cluster --name nareshit.k8s.local --yes --admin
+   47  history
+
+
+===========================================================================================================================================================================================================================
+
+service
+It is a way to expose an application running on a set of Pods as a network service.
+Kubernetes gives Pods their own IP addresses and a single DNS name for a set of Pods, and can load-balance across them.
+For some parts of your application (for example, frontends) you may want to expose a Service onto an external IP address, that's outside of your cluster.
+Kubernetes ServiceTypes allow you to specify what kind of Service you want. The default is ClusterIP.
+
+
+	•	ClusterIP: Exposes the Service on a cluster-internal IP. Choosing this value makes the Service only reachable from within the cluster. This is the default ServiceType.
+	•	NodePort: Exposes the Service on each Node's IP at a static port (the NodePort). A ClusterIP Service, to which the NodePort Service routes, is automatically created. You'll be able to contact the NodePort Service, from outside the cluster, by requesting <NodeIP>:<NodePort>.
+	•	LoadBalancer: Exposes the Service externally using a cloud provider's load balancer. NodePort and ClusterIP Services, to which the external load balancer routes, are automatically created.
+	•	ExternalName: Maps the Service to the contents of the externalName field (e.g. foo.bar.example.com), by returning a CNAME record with its value. No proxying of any kind is set up.
+
+NODE PORT:
+Default port range is 30000 to 32767
+each node proxies that port (the same port number on every Node) into your Service.
+If you want a specific port number, you can specify a value in the nodePort field.
+You also have to use a valid port number, one that's inside the range configured for NodePort us
+Using a NodePort gives you the freedom to set up your own load balancing solution, to configure environments that are not fully supported by Kubernetes, or even to expose one or more nodes' IPs directly.
+
+LOAD BALANCER:
+On cloud providers which support external load balancers, setting the type field to LoadBalancer provisions a load balancer for your Service. 
+Traffic from the external load balancer is directed at the backend Pods. The cloud provider decides how it is load balanced.
+Some cloud providers allow you to specify the loadBalancerIP. In those cases, the load-balancer is created with the user-specified loadBalancerIP. If the loadBalancerIP field is not specified, the loadBalancer is set up with an ephemeral IP address.
+
+What is Kubeadm?
+Lucas Kaldstrom one of the Kubernetes maintainers for kubeadm talked about some of the internals of Kubeadm and also future plans for its ongoing improvements.
+So, what is kubeadm? Kubeadm is a toolkit for bootstrapping and a best-practice for Kubernetes clustering on an existing infrastructure. Kubeadm cannot provision your infrastructure which is one of the main differences to kops. Another differentiator is that Kubeadm can be used not only as an installer but also as a building block.
+Kubeadm sets up a minimal viable cluster. It is designed to have all the components you need in one place in one cluster regardless of where you are running them.
+An advantage of kubeadm is that it can be used anywhere —even Raspberry Pi— to set up a cluster and try it out before committing to something like kops
+
+Kubespray vs Kops vs Kubeadm
+Kubespray runs on bare metal and most clouds, using Ansible as its substrate for provisioning and orchestration. Kubespray is a good choice if you are familiar with Ansible, existing Ansible deployments, or the desire to run a Kubernetes cluster across multiple platforms.
+Kops is more tightly integrated with the unique features of the clouds it supports so it could be a better choice if you know that you will only be using one platform for the foreseeable future. Kops performs the provisioning and orchestration itself, and as such is less flexible in deployment platforms
+Kubeadm provides domain Knowledge of Kubernetes clusters’ life cycle management, including self-hosted layouts, dynamic discovery services, and so on. Kubespray however, does generic configuration management tasks from the “OS operators” ansible world, plus some initial K8s clustering (with networking plugins included) and control plane bootstrapping
+
+
+===================
+
+
+
