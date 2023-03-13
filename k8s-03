@@ -82,3 +82,33 @@
    82  kops get cluster
    83  history
    84  kops delete cluster --name rahams.k8s.local --yes
+   
+   [=========================================
+   
+   service:
+   apiVersion: v1
+kind: Service
+metadata:
+  name: frontend
+spec:
+  type: ClusterIP
+  selector:
+    app: swiggy
+  ports:
+    - port: 80
+      targetPort: 80
+
+pod amnifest:
+
+kind: Pod
+metadata:
+  name: frontend
+  labels:
+    app: swiggy
+spec:
+  containers:
+    - name: cont1
+      image: sksajid/sajid
+      ports:
+        - containerPort: 80
+
