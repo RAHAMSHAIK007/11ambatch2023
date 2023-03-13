@@ -1,0 +1,84 @@
+ 1  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    2  unzip awscliv2.zip
+    3  sudo ./aws/install
+    4  curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+    5  wget https://github.com/kubernetes/kops/releases/download/v1.24.1/kops-linux-amd64
+    6  ll
+    7  chmod +x kops-linux-amd64 kubectl
+    8  ll
+    9  mv kubectl /usr/local/bin/kubectl
+   10  mv kops-linux-amd64  /usr/local/bin/kops
+   11  kops version
+   12  kubectl version
+   13  vim .bashrc
+   14  source .bashrc
+   15  kops version
+   16  kubectl version
+   17  aws configure
+   18  aws s3api create-bucket --bucket rahams.k8s.local --region us-east-1
+   19  aws s3api create-bucket --bucket rahamshaik007.k8s.local --region us-east-1
+   20  aws s3api put-bucket-versioning --bucket rahamshaik007.k8s.local --region us-east-1 --versioning-configuration Status=Enabled
+   21  export KOPS_STATE_STORE=s3://rahamshaik007.k8s.local
+   22  kops create cluster --name rahams.k8s.local --zones us-east-1a --master-size t2.medium --node-size t2.micro
+   23   kops edit cluster rahams.k8s.local
+   24  kops edit ig --name=rahams.k8s.local master-us-east-1a
+   25  kops edit ig --name=rahams.k8s.local nodes-us-east-1a
+   26  kops get cluster
+   27  kops update cluster --name rahams.k8s.local --yes --admin
+   28  kops validate cluster --wait 10m
+   29  kops get no
+   30  kops get nodes
+   31  kubectl get no
+   32  kubectl run raham --image nginx
+   33  kubectl get po
+   34  kubectl get po -o wide
+   35  vim raham.yml
+   36  ll
+   37  kubectl create -f raham.yml
+   38  kubectl get rs
+   39  kubectl get po
+   40  kubectl get po -o wide nginx-deploy-7dc4b48974-h6nsm
+   41  kubectl get po -o wide nginx-deploy-7dc4b48974-pjcgh
+   42  kubectl scale replicaset/nginx-deploy --replicas=10
+   43  kubectl scale deployment/nginx-deploy --replicas=10
+   44  kubectl get po
+   45  kubectl get po -o wide
+   46  kubectl get ns
+   47  kubectl describe pod raham
+   48  kubectl create ns rahamshaik
+   49  kubectl get ns
+   50  kubectl config set-context --current --namespace=rahamshaik
+   51  kubectl get po
+   52  kubectl run swiggy1 --image httpd
+   53  kubectl run swiggy2 --image httpd
+   54  kubectl run swiggy3 --image httpd
+   55  kubectl run swiggy4 --image httpd
+   56  kubectl get po
+   57  kubectl config set-context --current --namespace=default
+   58  kubectl get po
+   59  kubectl delete pod swiggy1
+   60  kubectl get all -ns rahamshaik
+   61  kubectl get pp -ns rahamshaik
+   62  kubectl get po -ns rahamshaik
+   63  kubectl get po -n rahamshaik
+   64  vim cip.yml
+   65  kubectl create -f cip.yml
+   66  vim cip.yml
+   67  kubectl create -f cip.yml
+   68  vim cip.yml
+   69  kubectl create -f cip.yml
+   70  kubectl get po
+   71  kubectl get po -o wide
+   72  vim service.yml
+   73  kubectl create -f service.yml
+   74  vim service.yml
+   75  kubectl create -f service.yml
+   76  vim service.yml
+   77  kubectl create -f service.yml
+   78  kubectl get po
+   79  kubectl get po -o wide
+   80  curl http://34.207.81.148:80
+   81  history
+   82  kops get cluster
+   83  history
+   84  kops delete cluster --name rahams.k8s.local --yes
