@@ -1,0 +1,59 @@
+  1  aws configure
+    2  aws s3 ls
+    3  aws s3 ls s3://rahamterr0099
+    4  aws s3 mb s3://raham998877
+    5  aws s3 ls
+    6  aws s3 mb s3://raham889977
+    7  aws s3 mb s3://raham55ffrsh
+    8  aws s3 ls
+    9  aws s3 rb s3://raham55ffrsh
+   10  aws s3 ls
+   11  vim file1
+   12  ll
+   13  aws s3 ls
+   14  aws s3 cp file1 s3://rahamterr0099
+   15  cp file1 file2
+   16  ll
+   17  aws s3 ls
+   18  aws s3 cp file2 s3://rahamterr0099
+   19  aws s3 cp s3://rahamterr0099/ebsvolumes.pem .
+   20  ll
+   21  aws s3 ls
+   22  aws s3 ls s3://rahamterr0099
+   23  aws s3 ls raham998877
+   24  aws s3 sync s3://rahamterr0099 s3://raham998877
+   25  aws s3 cp s3://raham998877/fresher_credentials.csv s3://rahamterr0099
+   26  ll
+   27  mkdir abc
+   28  cp * abc/
+   29  cp -R * abc/
+   30  LL
+   31  ll
+   32  ls abc/
+   33  ll
+   34  aws s3 ls
+   35  aws s3 cp abc s3://rahamterr0099
+   36  aws s3 cp abc s3://rahamterr0099 --recursive
+   37  aws s3 ls
+   38  aws s3 ls s3://rahamterr0099
+   39  aws s3 rm s3://rahamterr0099/ebsvolumes.pem
+   40  aws s3api put-bucket-versioning --bucket rahamterr0099 --versioning-configuration Status=Enabled
+   41  aws s3api put-bucket-versioning --bucket rahamterr0099 --versioning-configuration Status=Suspended
+   42  aws ec2 ls
+   43  aws ec2 describe-instances
+   44  aws iam create-user --user-name raham1
+   45  aws iam create-group --group-name xyzm
+   46  aws iam delete-user --user-name raham1
+   47  aws iam delete-group --group-name xyzm
+   48  aws ec2 describe-instances
+   49  aws ec2 describe-instances
+   50  ls -al
+   51  cd .aws/
+   52  ll
+   53  vim config
+   54  cd
+   55  aws ec2 describe-instances
+   56  aws ec2 describe-instances  --instance-ids i-04c8665a8159befe6
+   57  aws ec2 stop-instances  --instance-ids i-04c8665a8159befe6
+   58  aws ec2 terminate-instances  --instance-ids i-04c8665a8159befe6
+   59  history
